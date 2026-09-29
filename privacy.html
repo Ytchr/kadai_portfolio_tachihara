@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>プライバシーポリシー | Anchor Grid</title>
+
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- ====================== ヘッダー ====================== -->
+    <header class="header">
+      <h1 class="logo">
+        <a href="index.html">
+          <img src="./images/icon-logo.svg" alt="Anchor Grid" />
+        </a>
+      </h1>
+      <nav class="header-nav">
+        <ul>
+          <li>
+            <a href="index.html#about">
+              <span class="nav-ja">私について</span>
+              <span class="nav-en">ABOUT</span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html#skill">
+              <span class="nav-ja">できること</span>
+              <span class="nav-en">SKILL</span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html#works">
+              <span class="nav-ja">制作実績</span>
+              <span class="nav-en">WORKS</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="hamburger"><span></span></div>
+
+      <nav class="header-nav-sp">
+        <ul>
+          <li>
+            <a href="index.html#about">
+              <span class="nav-ja">私について</span>
+              <span class="nav-en">ABOUT</span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html#skill">
+              <span class="nav-ja">できること</span>
+              <span class="nav-en">SKILL</span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html#works">
+              <span class="nav-ja">制作実績</span>
+              <span class="nav-en">WORKS</span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html#contact">
+              <span class="nav-ja">お問い合わせ</span>
+              <span class="nav-en">CONTACT</span>
+            </a>
+          </li>
+        </ul>
+        <a href="contact.html" class="btn-cta">採用ご担当者様へ</a>
+      </nav>
+
+      <a href="contact.html" class="btn-cta">採用ご担当者様へ</a>
+    </header>
+
+    <!-- ====================== プライバシーポリシー ====================== -->
+    <main class="contact-page">
+      <p class="contact-page-watermark contact-page-watermark-2">PRIVACY<br />POLICY</p>
+
+      <div class="contact-inner">
+        <h2 class="contact-page-heading">プライバシーポリシー</h2>
+
+        <section class="privacy-block">
+          <h3 class="privacy-heading">はじめに</h3>
+          <p class="privacy-text">
+            本ウェブサイト（以下「当サイト」）は、お問い合わせいただいた方の個人情報を、以下の方針に基づき適切に取り扱います。
+          </p>
+        </section>
+
+        <section class="privacy-block">
+          <h3 class="privacy-heading">取得する情報</h3>
+          <p class="privacy-text">
+            お問い合わせフォームより、お名前・会社名・メールアドレス・お問い合わせ内容をお預かりします。
+          </p>
+        </section>
+
+        <section class="privacy-block">
+          <h3 class="privacy-heading">利用目的</h3>
+          <p class="privacy-text">
+            お預かりした情報は、お問い合わせへの回答のために使用し、それ以外の目的では使用いたしません。
+          </p>
+        </section>
+
+        <section class="privacy-block">
+          <h3 class="privacy-heading">第三者提供について</h3>
+          <p class="privacy-text">
+            お預かりした個人情報を、ご本人の同意なく第三者に提供することはございません。
+          </p>
+        </section>
+
+        <section class="privacy-block">
+          <h3 class="privacy-heading">お問い合わせ</h3>
+          <p class="privacy-text">
+            本ポリシーに関するご質問は、お問い合わせフォームよりご連絡ください。
+          </p>
+        </section>
+
+        <a class="privacy-back" href="contact.html">← お問い合わせフォームへ戻る</a>
+      </div>
+    </main>
+
+    <!-- ====================== フッター ====================== -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <a href="index.html">
+          <img class="footer-logo" src="./images/icon-logo.svg" alt="Anchor Grid" />
+        </a>
+        <p class="copyright">© 2026 Anchor Grid. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $(".hamburger").on("click", function () {
+          $(".hamburger").toggleClass("open");
+          $(".header-nav-sp").fadeToggle();
+        });
+        $(".header-nav-sp a, .logo a").on("click", function () {
+          $(".hamburger").removeClass("open");
+          $(".header-nav-sp").fadeOut();
+        });
+      });
+    </script>
+  </body>
+</html>
