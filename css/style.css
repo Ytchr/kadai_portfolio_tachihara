@@ -316,6 +316,7 @@ html{
     background-color: #ffffff;
     border-left: 8px solid #F4C0CD;
     border-radius: 6px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
     padding: 23px 23px 0;
     text-align: left;
 }
@@ -1147,6 +1148,16 @@ Aboutページ
     margin: 0 auto;
     aspect-ratio: 4 / 3;
     object-fit: contain;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+/* 切り抜き画像は絵の輪郭に沿って影を落とす（四角い影にならないように） */
+.detail-figure-wide img{
+    box-shadow: none;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+}
+/* work-05は画像そのものに影が焼き込まれているため、CSSでは付けない */
+.detail-figure-work05 img{
+    box-shadow: none;
 }
 /* 2案を並べて見せる（work-03）。下端を揃える */
 .detail-figure-pair{
@@ -1407,7 +1418,7 @@ Aboutページ
     width: 200px;
     margin: 28px auto 0;
     padding: 13px;
-    background-color: #E94F93;
+    background-color: #F82581;
     border: none;
     border-radius: 4px;
     font-family: inherit;
@@ -1419,7 +1430,7 @@ Aboutページ
     transition: 0.3s;
 }
 .form-submit:hover{
-    background-color: #F82581;
+    background-color: #F891BE;
 }
 
 /* ---------- プライバシーポリシー ---------- */
@@ -1477,7 +1488,7 @@ Aboutページ
     width: 200px;
     margin: 32px auto 0;
     padding: 13px;
-    background-color: #E94F93;
+    background-color: #F82581;
     border-radius: 4px;
     text-align: center;
     font-size: 14px;
@@ -1487,7 +1498,7 @@ Aboutページ
     transition: 0.3s;
 }
 .sent-back:hover{
-    background-color: #F82581;
+    background-color: #F891BE;
 }
 
 /* ==========================================================
@@ -1929,8 +1940,12 @@ Aboutページ
     .skill-list{
         margin-top: 32px;
     }
+    /* スマホでは文字が入りきらないため、ピンクの内側とカードの余白を詰める */
+    .skill-inner{
+        padding: 32px 10px;
+    }
     .skill-card{
-        padding: 16px 12px 0;
+        padding: 16px 8px 0;
     }
     .skill-name{
         font-size: 15px;
