@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anchor Grid | yukat portfolio</title>
+    <title>Webデザイナー ポートフォリオ | Anchor Grid</title>
+    <meta name="description" content="Webデザインスクールを卒業し、Web制作のお仕事を探しています。バナー・LP・Webサイトの制作実績を掲載しています。情報を整理して、迷わず伝わる形にすることを大切にしています。" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./images/favicon.png" />
 
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,8 +28,146 @@
   </head>
   <body>
     <!-- ====================== ローディング ====================== -->
+    <!-- 引き出しが開く → 中身が整う → 引き出しが閉まる → ロゴが出る -->
     <div class="intro" id="intro" aria-hidden="true">
-      <img class="intro-logo" src="./images/icon-logo.svg" alt="" />
+      <div class="intro-stage">
+        <svg
+          class="intro-desk"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="145 175 960 905"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient id="intro-pink" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+              <stop offset="0" stop-color="#ef4b8b" />
+              <stop offset="0.55" stop-color="#ed4b85" />
+              <stop offset="1" stop-color="#ed4384" />
+            </linearGradient>
+            <linearGradient id="intro-lightpink" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f9bdcb" />
+              <stop offset="0.6" stop-color="#fac0cd" />
+              <stop offset="1" stop-color="#f9bccc" />
+            </linearGradient>
+            <linearGradient id="intro-black" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#101113" />
+              <stop offset="0.55" stop-color="#090b0b" />
+              <stop offset="1" stop-color="#111214" />
+            </linearGradient>
+            <radialGradient id="intro-ivory">
+              <stop offset="0" stop-color="#fbfaf7" />
+              <stop offset="1" stop-color="#f7f6f2" />
+            </radialGradient>
+
+            <!-- 机の縁より上にはみ出した部分を隠すための窓 -->
+            <clipPath id="intro-clip">
+              <rect x="145" y="249" width="960" height="831" />
+            </clipPath>
+
+            <!-- 鉛筆・消しゴムの塗りを形の内側だけに収めるための型紙 -->
+            <clipPath id="intro-pencil-clip-1">
+              <path d="M301 378L316.2 440V979Q316.2 990 306.2 990H295.8Q285.8 990 285.8 979V440Z" />
+            </clipPath>
+            <clipPath id="intro-pencil-clip-2">
+              <path d="M364.5 378L379.7 440V979Q379.7 990 369.7 990H359.3Q349.3 990 349.3 979V440Z" />
+            </clipPath>
+            <clipPath id="intro-pencil-clip-3">
+              <path d="M428 378L443.2 440V979Q443.2 990 433.2 990H422.8Q412.8 990 412.8 979V440Z" />
+            </clipPath>
+            <clipPath id="intro-eraser-clip">
+              <rect x="534" y="415" width="87" height="183" rx="15.5" />
+            </clipPath>
+          </defs>
+
+          <!-- 引き出し。この g ごと上下に動く -->
+          <g clip-path="url(#intro-clip)">
+            <g class="intro-drawer">
+              <!-- 本体と仕切り -->
+              <path d="M199 247H1053V1065H199Z" fill="url(#intro-ivory)" stroke="#111213" stroke-width="2.2" />
+              <path d="M230 334H1022V1033.5H230Z" fill="none" stroke="#111213" stroke-width="2.2" />
+              <path d="M496.5 334V1033.5M658 334V656.5M870.5 334V1033.5M496.5 656.5H870.5" fill="none" stroke="#111213" stroke-width="2.2" />
+
+              <!-- 前板と取っ手 -->
+              <path d="M199 247H1053L1024.5 335.5H227.5Z" fill="url(#intro-pink)" stroke="#101112" stroke-width="1.8" stroke-linejoin="round" />
+              <circle cx="627" cy="293.3" r="23.5" fill="url(#intro-black)" stroke="#090b0b" stroke-width=".8" />
+
+              <!-- 鉛筆1 -->
+              <g class="intro-item intro-pencil-1">
+                <g clip-path="url(#intro-pencil-clip-1)">
+                  <path d="M301 378L316.2 440V979Q316.2 990 306.2 990H295.8Q285.8 990 285.8 979V440Z" fill="url(#intro-pink)" />
+                  <path d="M301 378L308.4 407.2L301 408.8L293.6 407.2Z" fill="url(#intro-black)" />
+                  <path d="M293.6 407.2L301 408.8L308.4 407.2L316.2 440.2L309 446.5L301 439.7L293.2 446.5L285.8 440.2Z" fill="url(#intro-lightpink)" />
+                  <path d="M285.8 924.5H316.2M285.8 938H316.2" stroke="#242025" stroke-width="1.55" />
+                  <path d="M285.8 948H316.2V991H285.8Z" fill="url(#intro-black)" />
+                </g>
+              </g>
+
+              <!-- 鉛筆2 -->
+              <g class="intro-item intro-pencil-2">
+                <g clip-path="url(#intro-pencil-clip-2)">
+                  <path d="M364.5 378L379.7 440V979Q379.7 990 369.7 990H359.3Q349.3 990 349.3 979V440Z" fill="url(#intro-pink)" />
+                  <path d="M364.5 378L371.9 407.2L364.5 408.8L357.1 407.2Z" fill="url(#intro-black)" />
+                  <path d="M357.1 407.2L364.5 408.8L371.9 407.2L379.7 440.2L372.5 446.5L364.5 439.7L356.7 446.5L349.3 440.2Z" fill="url(#intro-lightpink)" />
+                  <path d="M349.3 924.5H379.7M349.3 938H379.7" stroke="#242025" stroke-width="1.55" />
+                  <path d="M349.3 948H379.7V991H349.3Z" fill="url(#intro-black)" />
+                </g>
+              </g>
+
+              <!-- 鉛筆3 -->
+              <g class="intro-item intro-pencil-3">
+                <g clip-path="url(#intro-pencil-clip-3)">
+                  <path d="M428 378L443.2 440V979Q443.2 990 433.2 990H422.8Q412.8 990 412.8 979V440Z" fill="url(#intro-pink)" />
+                  <path d="M428 378L435.4 407.2L428 408.8L420.6 407.2Z" fill="url(#intro-black)" />
+                  <path d="M420.6 407.2L428 408.8L435.4 407.2L443.2 440.2L436 446.5L428 439.7L420.2 446.5L412.8 440.2Z" fill="url(#intro-lightpink)" />
+                  <path d="M412.8 924.5H443.2M412.8 938H443.2" stroke="#242025" stroke-width="1.55" />
+                  <path d="M412.8 948H443.2V991H412.8Z" fill="url(#intro-black)" />
+                </g>
+              </g>
+
+              <!-- 消しゴム -->
+              <g class="intro-item intro-eraser">
+                <g clip-path="url(#intro-eraser-clip)">
+                  <rect x="534" y="415" width="87" height="183" fill="url(#intro-lightpink)" />
+                  <path d="M533 414H622V497H533Z" fill="url(#intro-pink)" />
+                </g>
+                <rect x="534" y="415" width="87" height="183" rx="15.5" fill="none" stroke="#dc8fa8" stroke-opacity=".6" stroke-width=".7" />
+              </g>
+
+              <!-- 付箋 -->
+              <g class="intro-item intro-sticky">
+                <rect x="540.5" y="697.8" width="289" height="292.2" rx=".8" fill="url(#intro-lightpink)" stroke="#df9cb2" stroke-width=".55" />
+                <path d="M540.8 984.5H829.2V990H540.8Z" fill="#d996ad" opacity=".85" />
+              </g>
+
+              <!-- クリップ1 -->
+              <g class="intro-item intro-clip-1">
+                <path d="M714.8 470V542Q714.8 550.5 707.5 550.5Q700.2 550.5 700.2 542V470M694.5 444.8C694.5 427.2 720.5 427.2 720.5 444.8V568C720.5 585.6 694.5 585.6 694.5 568Z" fill="none" stroke="#f04487" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+
+              <!-- クリップ2 -->
+              <g class="intro-item intro-clip-2">
+                <path d="M773.3 470V542Q773.3 550.5 766 550.5Q758.7 550.5 758.7 542V470M753 444.8C753 427.2 779 427.2 779 444.8V568C779 585.6 753 585.6 753 568Z" fill="none" stroke="#f04487" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+
+              <!-- クリップ3 -->
+              <g class="intro-item intro-clip-3">
+                <path d="M831.3 470V542Q831.3 550.5 824 550.5Q816.7 550.5 816.7 542V470M811 444.8C811 427.2 837 427.2 837 444.8V568C837 585.6 811 585.6 811 568Z" fill="none" stroke="#f04487" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+
+              <!-- 定規 -->
+              <g class="intro-item intro-ruler">
+                <path d="M905.5 424.5H989.5V975H905.5Z" fill="url(#intro-pink)" />
+                <path d="M975.5 451.5H989M961.5 464.5H989M961.5 478.95H989M975.5 506.4H989M961.5 533.85H989M975.5 561.3H989M961.5 588.75H989M975.5 616.2H989M961.5 643.65H989M975.5 671.1H989M961.5 698.55H989M975.5 726H989M961.5 753.45H989M975.5 780.9H989M961.5 808.35H989M975.5 835.8H989M961.5 863.25H989M975.5 890.7H989M961.5 918.15H989M975.5 945.6H989" stroke="#31242c" stroke-width="1.4" />
+              </g>
+            </g>
+          </g>
+
+          <!-- 机の縁。ここは動かない -->
+          <rect x="155.5" y="184.5" width="943" height="64.5" rx="4.6" fill="url(#intro-pink)" />
+          <path d="M158 246.5H1095" fill="none" stroke="#d83b74" stroke-width="2.4" opacity=".65" />
+        </svg>
+
+        <img class="intro-logo" src="./images/icon-logo.svg" alt="" />
+      </div>
     </div>
 
     <!-- ====================== ヘッダー ====================== -->
@@ -302,7 +442,7 @@
       <p class="section-label">CONTACT</p>
       <h2 class="section-heading">お問い合わせ</h2>
       <p class="contact-text">
-        少しでもご興味をお持ちいただけましたら、ぜひ一度お話しできる機会を頂けると嬉しいです。<br />
+        少しでもご興味をお持ちいただけましたら、<br class="br-contact" />ぜひ一度お話しできる機会を頂けると嬉しいです。<br />
         デザイナーとして、新しい環境でのお仕事を探しています。
       </p>
       <a href="contact.html" class="btn-cta contact-btn">採用ご担当者様へ</a>
@@ -325,15 +465,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
-      // ローディング：読み込み完了後、かつ最低1.5秒たってから消す
+      // ローディング：読み込み完了後、かつロゴが出きる2.0秒を待ってから消す
       function hideIntro() {
         $("#intro").addClass("is-hidden");
       }
       $(window).on("load", function () {
-        setTimeout(hideIntro, Math.max(0, 1500 - performance.now()));
+        setTimeout(hideIntro, Math.max(0, 2000 - performance.now()));
       });
-      // 万一エラーで読み込み完了が来なくても、4秒で必ず消す
-      setTimeout(hideIntro, 4000);
+      // 万一エラーで読み込み完了が来なくても、5秒で必ず消す
+      setTimeout(hideIntro, 5000);
 
       $(function () {
         $(".work-list").on(

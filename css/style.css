@@ -8,6 +8,7 @@ html{
 
 /* ==========================================================
 ローディング（トップページのみ）
+ぐちゃぐちゃの引き出しが出る → カチカチと片付く → 引き出しが引っ込む
 ========================================================== */
 .intro{
     position: fixed;
@@ -17,35 +18,185 @@ html{
     justify-content: center;
     align-items: center;
     background-color: #FBEEF4;
-    transition: opacity 0.6s ease 0.2s, visibility 0.6s ease 0.2s;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
-.intro-logo{
-    width: 240px;
-    max-width: 55%;
-    opacity: 0;
-    animation: intro-logo-in 0.8s ease 0.1s forwards;
-    transition: opacity 0.4s ease;
+/* 引き出しとロゴを重ねるための土台 */
+.intro-stage{
+    position: relative;
+    width: min(400px, 62vw);
 }
-@keyframes intro-logo-in{
+.intro-desk{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* 引き出し全体。最初から開いていて、片付け終わったら机の中へ引っ込む。
+   中身がそろう1.13秒から0.2秒だけ間を置いて、0.09秒で一気に閉じる。
+   linear ＝ 加速も減速もしない一定の速さ。途中で速さが変わらないぶん、
+   まるごと一瞬で消えたように見える */
+.intro-drawer{
+    animation: intro-drawer-close 0.09s linear 1.33s forwards;
+}
+@keyframes intro-drawer-close{
     from{
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    to{
-        opacity: 1;
         transform: translateY(0);
     }
+    to{
+        transform: translateY(-820px);
+    }
 }
-/* 読み込み完了後。ロゴが先に消え、少し遅れて背景が消える */
-.intro.is-hidden .intro-logo{
+
+/* 引き出しの中身。
+   まずバラバラに散らかった状態で置いておき、出番が来たら
+   下の @keyframes に書いた道順をたどって定位置まで移動する。
+   最初から見えていてほしいので、透明度は一切いじらない */
+.intro-item{
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+/* パーツごとの動き方。1つずつ別の道順を通って定位置に向かう。
+   steps(1, end) ＝ 途中は一切なめらかにしない。下の地点でピタッと止まり、
+   次の地点へカクッと飛ぶ。コマ送りアニメと同じ考え方。
+   1コマを持つ長さ・コマ数・遠回りの仕方が1つずつ違うので、動きがそろわない */
+.intro-sticky  { animation: intro-move-sticky 0.45s steps(1, end) 0.25s both; }
+.intro-ruler   { animation: intro-move-ruler 0.71s steps(1, end) 0.27s both; }
+.intro-pencil-1{ animation: intro-move-pencil-1 0.65s steps(1, end) 0.25s both; }
+.intro-pencil-2{ animation: intro-move-pencil-2 0.78s steps(1, end) 0.3s both; }
+.intro-pencil-3{ animation: intro-move-pencil-3 0.56s steps(1, end) 0.32s both; }
+.intro-eraser  { animation: intro-move-eraser 0.67s steps(1, end) 0.25s both; }
+.intro-clip-1  { animation: intro-move-clip-1 0.42s steps(1, end) 0.35s both; }
+.intro-clip-2  { animation: intro-move-clip-2 0.83s steps(1, end) 0.3s both; }
+.intro-clip-3  { animation: intro-move-clip-3 0.54s steps(1, end) 0.38s both; }
+
+@keyframes intro-move-sticky{
+    0%{ transform: translate(-85px, -144px) rotate(-13deg); }
+    30%{ transform: translate(-180px, -54px) rotate(-34deg); }
+    62%{ transform: translate(-85px, 11px) rotate(-15deg); }
+    100%{ transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes intro-move-ruler{
+    0%{ transform: translate(-288px, -40px) rotate(-52deg); }
+    14%{ transform: translate(-428px, -60px) rotate(-115deg); }
+    31%{ transform: translate(-498px, 0px) rotate(-178deg); }
+    49%{ transform: translate(-388px, 130px) rotate(-241deg); }
+    66%{ transform: translate(-188px, 159px) rotate(-300deg); }
+    83%{ transform: translate(-48px, 56px) rotate(-345deg); }
+    100%{ transform: translate(0px, 0px) rotate(-360deg); }
+}
+
+@keyframes intro-move-pencil-1{
+    0%{ transform: translate(284px, -44px) rotate(62deg); }
+    34%{ transform: translate(48px, -57px) rotate(20deg); }
+    58%{ transform: translate(14px, -39px) rotate(11deg); }
+    76%{ transform: translate(7px, -22px) rotate(6deg); }
+    90%{ transform: translate(3px, -11px) rotate(3deg); }
+    100%{ transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes intro-move-pencil-2{
+    0%{ transform: translate(286px, 36px) rotate(112deg); }
+    12%{ transform: translate(256px, 6px) rotate(100deg); }
+    25%{ transform: translate(216px, 18px) rotate(88deg); }
+    37%{ transform: translate(176px, -4px) rotate(74deg); }
+    50%{ transform: translate(136px, 16px) rotate(58deg); }
+    63%{ transform: translate(96px, 6px) rotate(42deg); }
+    76%{ transform: translate(56px, 12px) rotate(28deg); }
+    89%{ transform: translate(26px, 4px) rotate(14deg); }
+    100%{ transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes intro-move-pencil-3{
+    0%{ transform: translate(192px, 6px) rotate(34deg); }
+    22%{ transform: translate(272px, -54px) rotate(52deg); }
+    46%{ transform: translate(132px, 21px) rotate(25deg); }
+    72%{ transform: translate(-53px, -16px) rotate(-14deg); }
+    100%{ transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes intro-move-eraser{
+    0%{ transform: translate(122px, 114px) rotate(21deg); }
+    16%{ transform: translate(188px, 194px) rotate(-40deg); }
+    33%{ transform: translate(122px, 264px) rotate(-110deg); }
+    52%{ transform: translate(38px, 194px) rotate(-180deg); }
+    70%{ transform: translate(-22px, 94px) rotate(-250deg); }
+    86%{ transform: translate(-28px, 34px) rotate(-320deg); }
+    100%{ transform: translate(0px, 0px) rotate(-360deg); }
+}
+
+@keyframes intro-move-clip-1{
+    0%{ transform: translate(-168px, 254px) rotate(-41deg); }
+    35%{ transform: translate(122px, 94px) rotate(-200deg); }
+    70%{ transform: translate(-18px, 34px) rotate(-330deg); }
+    100%{ transform: translate(0px, 0px) rotate(-360deg); }
+}
+
+@keyframes intro-move-clip-2{
+    0%{ transform: translate(-51px, 274px) rotate(86deg); }
+    11%{ transform: translate(-46px, 246px) rotate(78deg); }
+    22%{ transform: translate(-35px, 210px) rotate(69deg); }
+    33%{ transform: translate(-28px, 184px) rotate(60deg); }
+    45%{ transform: translate(-21px, 155px) rotate(50deg); }
+    56%{ transform: translate(-14px, 115px) rotate(39deg); }
+    67%{ transform: translate(-8px, 74px) rotate(28deg); }
+    79%{ transform: translate(-4px, 45px) rotate(18deg); }
+    90%{ transform: translate(-2px, 20px) rotate(9deg); }
+    100%{ transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes intro-move-clip-3{
+    0%{ transform: translate(-264px, 84px) rotate(128deg); }
+    19%{ transform: translate(-124px, 146px) rotate(100deg); }
+    41%{ transform: translate(-224px, 56px) rotate(70deg); }
+    63%{ transform: translate(-62px, 94px) rotate(40deg); }
+    82%{ transform: translate(-86px, 16px) rotate(18deg); }
+    100%{ transform: translate(0px, 0px) rotate(0deg); }
+}
+
+/* ロゴ。引き出しが一気に閉まる、その瞬間（1.33秒）から出す。
+   引き出しが消えるのと入れ替わりに、ゆっくりふわっと浮かび上がる */
+.intro-logo{
+    position: absolute;
+    /* 机のピンクの縁は、この枠の上から8.2%の位置で終わる。
+       そのすぐ下に置きたいので13.5%から始める */
+    top: 13.5%;
+    left: 50%;
+    width: 60%;
+    transform: translate(-50%, 0);
     opacity: 0;
+    animation: intro-logo-in 0.65s ease 1.33s forwards;
 }
+/* うっすら見えるところから始めて、じわっと濃くなる。
+   0からいきなり出すより、先に気配だけ現れるほうがやわらかい */
+@keyframes intro-logo-in{
+    0%{
+        opacity: 0.12;
+        transform: translate(-50%, 8px);
+    }
+    45%{
+        opacity: 0.35;
+    }
+    100%{
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+/* 読み込み完了後。背景ごと消える */
 .intro.is-hidden{
     opacity: 0;
     visibility: hidden;
 }
-/* 動きを減らす設定にしている人には、動かさずに表示する */
+/* 動きを減らす設定にしている人には、動かさずに片付いた状態で見せる */
 @media (prefers-reduced-motion: reduce){
+    .intro-drawer{
+        animation: none;
+    }
+    .intro-item{
+        transform: none;
+        animation: none;
+    }
     .intro-logo{
         opacity: 1;
         animation: none;
@@ -804,7 +955,8 @@ Aboutページ
 ============================================================= */
 .br-sp,
 .br-md,
-.br-card{
+.br-card,
+.br-contact{
     display: none;
 }
 /* パソコンだけ改行する（スマホでは自然に折り返す） */
@@ -958,6 +1110,50 @@ Aboutページ
 }
 
 /* ---------- 引用ブロック ---------- */
+/* ---------- 読み終えた人の次の行き先（aboutページ下部） ---------- */
+.about-cta{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 72px;
+    padding: 0 20px;
+}
+/* 主役：制作実績へ */
+.about-cta-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 47px;
+    background-color: #F82581;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #ffffff;
+    transition: 0.3s;
+}
+.about-cta-main:hover{
+    background-color: #F891BE;
+}
+/* 脇役：お問い合わせへ。
+   パソコンはヘッダーに同じボタンがあるため、スマホでだけ表示する */
+.about-cta-sub{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 47px;
+    border: 1px solid #E94F93;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #E94F93;
+    transition: 0.3s;
+}
+.about-cta-sub:hover{
+    background-color: #FBEEF4;
+}
 .about-quote{
     width: 100%;
     margin: 40px 0 0;
@@ -1460,8 +1656,11 @@ Aboutページ
     text-decoration: underline;
 }
 .form-submit{
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 200px;
+    height: 47px;
     margin: 28px auto 0;
     padding: 13px;
     background-color: #F82581;
@@ -1477,6 +1676,71 @@ Aboutページ
 }
 .form-submit:hover{
     background-color: #F891BE;
+}
+/* ---------- 送信中の表示 ---------- */
+/* 送信中はボタンの中身を隠し、代わりにバーを表示する。
+   高さは変えないので、下の要素がずれない */
+.form-submit.is-sending{
+    background-color: transparent;
+    cursor: default;
+}
+.form-submit.is-sending .form-submit-text{
+    display: none;
+}
+.form-submit:disabled{
+    cursor: default;
+}
+
+/* 6つのマスが上下に切り替わりながら順に埋まる。
+   uiverse.io の loader を参考に、色・大きさ・速度をサイトに合わせて調整 */
+.form-spinner{
+    display: none;
+    width: 120px;
+    height: 12px;
+    border-radius: 2px;
+    background:
+        linear-gradient(#F82581 50%, #0000 0),
+        linear-gradient(#0000 50%, #F82581 0),
+        linear-gradient(#F82581 50%, #0000 0),
+        linear-gradient(#0000 50%, #F82581 0),
+        linear-gradient(#F82581 50%, #0000 0),
+        linear-gradient(#0000 50%, #F82581 0)
+        #FBEEF4;
+    background-size: calc(100% / 6 + 1px) 200%;
+    background-repeat: no-repeat;
+}
+.form-submit.is-sending .form-spinner{
+    display: block;
+    animation: form-bars 1.8s infinite;
+}
+@keyframes form-bars{
+    0%{
+        background-position: calc(0*100%/5) 100%, calc(1*100%/5) 0%, calc(2*100%/5) 100%, calc(3*100%/5) 0%, calc(4*100%/5) 100%, calc(5*100%/5) 0%;
+    }
+    16.67%{
+        background-position: calc(0*100%/5) 0%, calc(1*100%/5) 0%, calc(2*100%/5) 100%, calc(3*100%/5) 0%, calc(4*100%/5) 100%, calc(5*100%/5) 0%;
+    }
+    33.33%{
+        background-position: calc(0*100%/5) 0%, calc(1*100%/5) 100%, calc(2*100%/5) 100%, calc(3*100%/5) 0%, calc(4*100%/5) 100%, calc(5*100%/5) 0%;
+    }
+    50%{
+        background-position: calc(0*100%/5) 0%, calc(1*100%/5) 100%, calc(2*100%/5) 0%, calc(3*100%/5) 0%, calc(4*100%/5) 100%, calc(5*100%/5) 0%;
+    }
+    66.67%{
+        background-position: calc(0*100%/5) 0%, calc(1*100%/5) 100%, calc(2*100%/5) 0%, calc(3*100%/5) 100%, calc(4*100%/5) 100%, calc(5*100%/5) 0%;
+    }
+    83.33%{
+        background-position: calc(0*100%/5) 0%, calc(1*100%/5) 100%, calc(2*100%/5) 0%, calc(3*100%/5) 100%, calc(4*100%/5) 0%, calc(5*100%/5) 0%;
+    }
+    100%{
+        background-position: calc(0*100%/5) 0%, calc(1*100%/5) 100%, calc(2*100%/5) 0%, calc(3*100%/5) 100%, calc(4*100%/5) 0%, calc(5*100%/5) 100%;
+    }
+}
+/* 動きを減らす設定の人には動かさない */
+@media (prefers-reduced-motion: reduce){
+    .form-submit.is-sending .form-spinner{
+        animation: none;
+    }
 }
 
 /* ---------- プライバシーポリシー ---------- */
@@ -1564,6 +1828,10 @@ Aboutページ
     /* ---------- Aboutヒーロー：窮屈になる手前で1カラムへ ---------- */
     .br-md{
         display: none;
+    }
+    /* お問い合わせの本文が3行になる幅から、「ぜひ」の前で改行する */
+    .br-contact{
+        display: inline;
     }
 
     /* ---------- Works：カードが狭くなるので説明文を意味の切れ目で改行 ---------- */
@@ -1883,6 +2151,20 @@ Aboutページ
         margin: 32px 0 0;
         padding: 24px 20px;
     }
+    /* ボタンは縦に積んで、指で押しやすい幅に */
+    .about-cta{
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 48px;
+        padding: 0 7.7vw;
+    }
+    .about-cta-main{
+        width: 100%;
+    }
+    .about-cta-sub{
+        display: flex;
+        width: 100%;
+    }
     .about-quote p{
         font-size: 16px;
     }
@@ -2105,6 +2387,7 @@ Aboutページ
         top: 15px;
         left: -21px;
     }
+    /* 下に回り込んだら、画面幅にかかわらず常に中央に置く */
     .contact-illust{
         width: 32.2%;
         max-width: 150px;
@@ -2112,7 +2395,8 @@ Aboutページ
         object-fit: contain;
         top: auto;
         bottom: 0;
-        left: 33.3%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     /* ---------- フッター ---------- */

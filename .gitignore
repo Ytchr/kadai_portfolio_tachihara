@@ -9,5 +9,4 @@ node_modules/
 .DS_Store
 
 # 作業中のバックアップ（手元には残すが提出はしない）
-*.bak
-*.bak[0-9]
+*.bak*
