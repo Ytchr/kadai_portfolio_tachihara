@@ -91,25 +91,33 @@
         </p>
         <p class="contact-page-required">＊ は必須項目です。</p>
 
-        <form class="contact-form" action="sent.html" method="get">
+        <form
+          class="contact-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSeQU-14eiWrD_kbWRA0KQVAq7OEROMMpye3QQmtesks53cH-A/formResponse"
+          method="POST"
+          target="hidden_iframe"
+          onsubmit="submitted = true;"
+        >   
+
+
           <div class="form-group">
             <label class="form-label" for="name">お名前 <span class="form-req">＊</span></label>
-            <input class="form-input" type="text" id="name" name="name" placeholder="例：山田 太郎" required />
+            <input class="form-input" type="text" id="name" name="entry.1740243286" placeholder="例：山田 太郎" required />
           </div>
 
           <div class="form-group">
             <label class="form-label" for="company">会社名 <span class="form-req">＊</span></label>
-            <input class="form-input" type="text" id="company" name="company" placeholder="例：株式会社○○" required />
+            <input class="form-input" type="text" id="company" name="entry.954462125" placeholder="例：株式会社○○" required />
           </div>
 
           <div class="form-group">
             <label class="form-label" for="email">メールアドレス <span class="form-req">＊</span></label>
-            <input class="form-input" type="email" id="email" name="email" placeholder="example@mail.com" required />
+            <input class="form-input" type="email" id="email" name="entry.1854233642" placeholder="example@mail.com" required />
           </div>
 
           <div class="form-group">
             <label class="form-label" for="message">お問い合わせ内容 <span class="form-req">＊</span></label>
-            <textarea class="form-textarea" id="message" name="message" placeholder="ご質問・ご連絡事項 等ご記入ください。" required></textarea>
+            <textarea class="form-textarea" id="message" name="entry.850158858" placeholder="ご質問・ご連絡事項 等ご記入ください。" required></textarea>
           </div>
 
           <div class="form-agree">
@@ -119,6 +127,13 @@
 
           <button class="form-submit" type="submit">送信する</button>
         </form>
+
+        <iframe
+          name="hidden_iframe"
+          id="hidden_iframe"
+          style="display: none"
+          onload="if (submitted) { window.location = 'sent.html'; }"
+        ></iframe>
       </div>
     </main>
 
@@ -134,14 +149,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-      $(function () {
-        // 必須項目のチェックを通ったら完了ページへ移動する
-        // （入力内容がURLに残らないよう、通常の送信は止めている）
-        $(".contact-form").on("submit", function (e) {
-          e.preventDefault();
-          location.href = "sent.html";
-        });
+      let submitted = false;
 
+      $(function () {
         $(".hamburger").on("click", function () {
           $(".hamburger").toggleClass("open");
           $(".header-nav-sp").fadeToggle();
@@ -151,6 +161,5 @@
           $(".header-nav-sp").fadeOut();
         });
       });
-    </script>
-  </body>
+    </script>  </body>
 </html>

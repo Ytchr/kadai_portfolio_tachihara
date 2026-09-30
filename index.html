@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <!-- ====================== ローディング ====================== -->
+    <div class="intro" id="intro" aria-hidden="true">
+      <img class="intro-logo" src="./images/icon-logo.svg" alt="" />
+    </div>
+
     <!-- ====================== ヘッダー ====================== -->
     <header class="header">
       <h1 class="logo">
@@ -320,6 +325,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
+      // ローディング：読み込み完了後、かつ最低1.5秒たってから消す
+      function hideIntro() {
+        $("#intro").addClass("is-hidden");
+      }
+      $(window).on("load", function () {
+        setTimeout(hideIntro, Math.max(0, 1500 - performance.now()));
+      });
+      // 万一エラーで読み込み完了が来なくても、4秒で必ず消す
+      setTimeout(hideIntro, 4000);
+
       $(function () {
         $(".work-list").on(
           "beforeChange",
