@@ -343,7 +343,7 @@ html{
 .hero-scroll-text{
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 15px;
     writing-mode: vertical-rl;
     font-family: "Josefin Sans", sans-serif;
     font-size: 12px;
