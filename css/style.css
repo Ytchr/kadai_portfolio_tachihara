@@ -50,7 +50,12 @@ html{
 /* 引き出しの中身。
    まずバラバラに散らかった状態で置いておき、出番が来たら
    下の @keyframes に書いた道順をたどって定位置まで移動する。
-   最初から見えていてほしいので、透明度は一切いじらない */
+   最初から見えていてほしいので、透明度は一切いじらない。
+
+   backwards ＝ 始まる前は最初のコマ（散らかった位置）を見せ、
+   終わったあとはこの .intro-item 自身の指定に戻す。
+   ここでは transform を何も書いていない＝ズレも傾きもゼロなので、
+   アニメーションの終わり方に関係なく、必ずまっすぐ定位置に収まる */
 .intro-item{
     transform-box: fill-box;
     transform-origin: center;
@@ -60,20 +65,21 @@ html{
    steps(1, end) ＝ 途中は一切なめらかにしない。下の地点でピタッと止まり、
    次の地点へカクッと飛ぶ。コマ送りアニメと同じ考え方。
    1コマを持つ長さ・コマ数・遠回りの仕方が1つずつ違うので、動きがそろわない */
-.intro-sticky  { animation: intro-move-sticky 0.45s steps(1, end) 0.25s both; }
-.intro-ruler   { animation: intro-move-ruler 0.71s steps(1, end) 0.27s both; }
-.intro-pencil-1{ animation: intro-move-pencil-1 0.65s steps(1, end) 0.25s both; }
-.intro-pencil-2{ animation: intro-move-pencil-2 0.78s steps(1, end) 0.3s both; }
-.intro-pencil-3{ animation: intro-move-pencil-3 0.56s steps(1, end) 0.32s both; }
-.intro-eraser  { animation: intro-move-eraser 0.67s steps(1, end) 0.25s both; }
-.intro-clip-1  { animation: intro-move-clip-1 0.42s steps(1, end) 0.35s both; }
-.intro-clip-2  { animation: intro-move-clip-2 0.83s steps(1, end) 0.3s both; }
-.intro-clip-3  { animation: intro-move-clip-3 0.54s steps(1, end) 0.38s both; }
+.intro-sticky  { animation: intro-move-sticky 0.45s steps(1, end) 0.25s backwards; }
+.intro-ruler   { animation: intro-move-ruler 0.71s steps(1, end) 0.27s backwards; }
+.intro-pencil-1{ animation: intro-move-pencil-1 0.65s steps(1, end) 0.25s backwards; }
+.intro-pencil-2{ animation: intro-move-pencil-2 0.78s steps(1, end) 0.3s backwards; }
+.intro-pencil-3{ animation: intro-move-pencil-3 0.56s steps(1, end) 0.32s backwards; }
+.intro-eraser  { animation: intro-move-eraser 0.67s steps(1, end) 0.25s backwards; }
+.intro-clip-1  { animation: intro-move-clip-1 0.42s steps(1, end) 0.35s backwards; }
+.intro-clip-2  { animation: intro-move-clip-2 0.83s steps(1, end) 0.3s backwards; }
+.intro-clip-3  { animation: intro-move-clip-3 0.54s steps(1, end) 0.38s backwards; }
 
 @keyframes intro-move-sticky{
     0%{ transform: translate(-85px, -144px) rotate(-13deg); }
     30%{ transform: translate(-180px, -54px) rotate(-34deg); }
     62%{ transform: translate(-85px, 11px) rotate(-15deg); }
+    99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
@@ -84,6 +90,7 @@ html{
     49%{ transform: translate(-388px, 130px) rotate(-241deg); }
     66%{ transform: translate(-188px, 159px) rotate(-300deg); }
     83%{ transform: translate(-48px, 56px) rotate(-345deg); }
+    99%{ transform: translate(0px, 0px) rotate(-360deg); }
     100%{ transform: translate(0px, 0px) rotate(-360deg); }
 }
 
@@ -93,6 +100,7 @@ html{
     58%{ transform: translate(14px, -39px) rotate(11deg); }
     76%{ transform: translate(7px, -22px) rotate(6deg); }
     90%{ transform: translate(3px, -11px) rotate(3deg); }
+    99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
@@ -105,6 +113,7 @@ html{
     63%{ transform: translate(96px, 6px) rotate(42deg); }
     76%{ transform: translate(56px, 12px) rotate(28deg); }
     89%{ transform: translate(26px, 4px) rotate(14deg); }
+    99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
@@ -113,6 +122,7 @@ html{
     22%{ transform: translate(272px, -54px) rotate(52deg); }
     46%{ transform: translate(132px, 21px) rotate(25deg); }
     72%{ transform: translate(-53px, -16px) rotate(-14deg); }
+    99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
@@ -123,6 +133,7 @@ html{
     52%{ transform: translate(38px, 194px) rotate(-180deg); }
     70%{ transform: translate(-22px, 94px) rotate(-250deg); }
     86%{ transform: translate(-28px, 34px) rotate(-320deg); }
+    99%{ transform: translate(0px, 0px) rotate(-360deg); }
     100%{ transform: translate(0px, 0px) rotate(-360deg); }
 }
 
@@ -130,6 +141,7 @@ html{
     0%{ transform: translate(-168px, 254px) rotate(-41deg); }
     35%{ transform: translate(122px, 94px) rotate(-200deg); }
     70%{ transform: translate(-18px, 34px) rotate(-330deg); }
+    99%{ transform: translate(0px, 0px) rotate(-360deg); }
     100%{ transform: translate(0px, 0px) rotate(-360deg); }
 }
 
@@ -143,6 +155,7 @@ html{
     67%{ transform: translate(-8px, 74px) rotate(28deg); }
     79%{ transform: translate(-4px, 45px) rotate(18deg); }
     90%{ transform: translate(-2px, 20px) rotate(9deg); }
+    99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
@@ -152,6 +165,7 @@ html{
     41%{ transform: translate(-224px, 56px) rotate(70deg); }
     63%{ transform: translate(-62px, 94px) rotate(40deg); }
     82%{ transform: translate(-86px, 16px) rotate(18deg); }
+    99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
@@ -310,21 +324,31 @@ html{
     right: 0;
     width: 34%;
 }
+/* スクロールの案内。
+   以前は文字と矢印を別々に % で置いていたため、画面を縮めると
+   2つの間隔だけが詰まって、文字が線に重なっていた。
+   1つの箱にまとめて箱ごと配置し、中の間隔は px で固定する */
 .hero-scroll{
     position: absolute;
-    top: 60%;
-    left: 5.5%;
+    top: 58.9%;
+    left: 5%;
+    width: 16px;
+}
+.hero-scroll-arrow{
+    display: block;
+    width: 100%;
+}
+/* 縦線は矢印の画像の中の、左から7〜8.5pxの位置にある。
+   その右に6px空けて文字を置く。基準が画像なので、画面幅が変わってもずれない */
+.hero-scroll-text{
+    position: absolute;
+    top: 10px;
+    left: 10px;
     writing-mode: vertical-rl;
     font-family: "Josefin Sans", sans-serif;
     font-size: 12px;
     letter-spacing: 0.12em;
     color: #e94f93;
-}
-.hero-scroll-arrow{
-    position: absolute;
-    top: 58.9%;
-    left: 5%;
-    width: 16px;
 }
 /* ===============================================================
 共通パーツ
@@ -2040,8 +2064,7 @@ Aboutページ
         right: auto;
         width: 41.8%;
     }
-    .hero-scroll,
-    .hero-scroll-arrow{
+    .hero-scroll{
         display: none;
     }
 

@@ -258,12 +258,15 @@
           />
         </picture>
       </div>
-      <p class="hero-scroll">scroll</p>
-      <img
-        class="hero-scroll-arrow"
-        src="./images/hero-scroll-arrow.svg"
-        alt=""
-      />
+      <!-- スクロールの案内。線と文字を1つの箱に入れて、箱ごと配置する -->
+      <div class="hero-scroll">
+        <img
+          class="hero-scroll-arrow"
+          src="./images/hero-scroll-arrow.svg"
+          alt=""
+        />
+        <p class="hero-scroll-text">scroll</p>
+      </div>
     </section>
 
     <!-- =================私について（ABOUT）======================== -->
@@ -465,15 +468,45 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
-      // ローディング：読み込み完了後、かつロゴが出きる2.0秒を待ってから消す
+      // ローディング：中のアニメーションが最後まで終わり、かつページの
+      // 読み込みも終わったら消す。
+      // 時計で「2秒たったら」と数えるのではなく、アニメーション自体に
+      // 「終わったら教えて」と聞く。スマホのように表示の開始が遅れる端末でも、
+      // 途中で切れずに最後まで再生される
       function hideIntro() {
         $("#intro").addClass("is-hidden");
       }
-      $(window).on("load", function () {
-        setTimeout(hideIntro, Math.max(0, 2000 - performance.now()));
+
+      // 中で動いているアニメーションが、ぜんぶ終わるのを待つ
+      var introFinished = (function () {
+        var intro = document.getElementById("intro");
+        var anims =
+          intro && intro.getAnimations
+            ? intro.getAnimations({ subtree: true })
+            : [];
+        // アニメーションが使えない環境では、従来どおり時間で待つ
+        if (!anims.length) {
+          return new Promise(function (done) {
+            setTimeout(done, 2000);
+          });
+        }
+        return Promise.all(
+          anims.map(function (a) {
+            return a.finished.catch(function () {});
+          })
+        );
+      })();
+
+      // ページの読み込みが終わるのを待つ
+      var pageLoaded = new Promise(function (done) {
+        if (document.readyState === "complete") done();
+        else $(window).on("load", done);
       });
-      // 万一エラーで読み込み完了が来なくても、5秒で必ず消す
-      setTimeout(hideIntro, 5000);
+
+      Promise.all([introFinished, pageLoaded]).then(hideIntro);
+
+      // 万一どちらかが返ってこなくても、8秒で必ず消す
+      setTimeout(hideIntro, 8000);
 
       $(function () {
         $(".work-list").on(
