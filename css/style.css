@@ -1,4 +1,15 @@
 @charset "utf-8";
+
+/* ==========================================================
+サイト全体で使いまわす値
+数字を1か所にまとめておくと、変えたいときにここだけ直せばよくなる
+========================================================== */
+:root{
+    /* 各セクションの黒い見出し（「制作実績の紹介」など）の文字サイズ。
+       WORKSのアイコンの大きさも、この値を基準にしている */
+    --section-heading-size: min(2.22vw, 32px);
+}
+
 *{
     box-sizing: border-box;
 }
@@ -77,94 +88,94 @@ html{
 
 @keyframes intro-move-sticky{
     0%{ transform: translate(-85px, -144px) rotate(-13deg); }
-    30%{ transform: translate(-180px, -54px) rotate(-34deg); }
-    62%{ transform: translate(-85px, 11px) rotate(-15deg); }
+    45.6%{ transform: translate(-180px, -54px) rotate(-34deg); }
+    80.8%{ transform: translate(-85px, 11px) rotate(-15deg); }
     99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
 @keyframes intro-move-ruler{
     0%{ transform: translate(-288px, -40px) rotate(-52deg); }
-    14%{ transform: translate(-428px, -60px) rotate(-115deg); }
-    31%{ transform: translate(-498px, 0px) rotate(-178deg); }
-    49%{ transform: translate(-388px, 130px) rotate(-241deg); }
-    66%{ transform: translate(-188px, 159px) rotate(-300deg); }
-    83%{ transform: translate(-48px, 56px) rotate(-345deg); }
+    23.9%{ transform: translate(-428px, -60px) rotate(-115deg); }
+    45.6%{ transform: translate(-498px, 0px) rotate(-178deg); }
+    64.6%{ transform: translate(-388px, 130px) rotate(-241deg); }
+    80.8%{ transform: translate(-188px, 159px) rotate(-300deg); }
+    93.2%{ transform: translate(-48px, 56px) rotate(-345deg); }
     99%{ transform: translate(0px, 0px) rotate(-360deg); }
     100%{ transform: translate(0px, 0px) rotate(-360deg); }
 }
 
 @keyframes intro-move-pencil-1{
     0%{ transform: translate(284px, -44px) rotate(62deg); }
-    34%{ transform: translate(48px, -57px) rotate(20deg); }
-    58%{ transform: translate(14px, -39px) rotate(11deg); }
-    76%{ transform: translate(7px, -22px) rotate(6deg); }
-    90%{ transform: translate(3px, -11px) rotate(3deg); }
+    28.4%{ transform: translate(48px, -57px) rotate(20deg); }
+    53.5%{ transform: translate(14px, -39px) rotate(11deg); }
+    74.7%{ transform: translate(7px, -22px) rotate(6deg); }
+    91.1%{ transform: translate(3px, -11px) rotate(3deg); }
     99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
 @keyframes intro-move-pencil-2{
     0%{ transform: translate(286px, 36px) rotate(112deg); }
-    12%{ transform: translate(256px, 6px) rotate(100deg); }
-    25%{ transform: translate(216px, 18px) rotate(88deg); }
-    37%{ transform: translate(176px, -4px) rotate(74deg); }
-    50%{ transform: translate(136px, 16px) rotate(58deg); }
-    63%{ transform: translate(96px, 6px) rotate(42deg); }
-    76%{ transform: translate(56px, 12px) rotate(28deg); }
-    89%{ transform: translate(26px, 4px) rotate(14deg); }
+    18.2%{ transform: translate(256px, 6px) rotate(100deg); }
+    35%{ transform: translate(216px, 18px) rotate(88deg); }
+    50.6%{ transform: translate(176px, -4px) rotate(74deg); }
+    64.6%{ transform: translate(136px, 16px) rotate(58deg); }
+    77%{ transform: translate(96px, 6px) rotate(42deg); }
+    87.5%{ transform: translate(56px, 12px) rotate(28deg); }
+    95.6%{ transform: translate(26px, 4px) rotate(14deg); }
     99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
 @keyframes intro-move-pencil-3{
     0%{ transform: translate(192px, 6px) rotate(34deg); }
-    22%{ transform: translate(272px, -54px) rotate(52deg); }
-    46%{ transform: translate(132px, 21px) rotate(25deg); }
-    72%{ transform: translate(-53px, -16px) rotate(-14deg); }
+    35%{ transform: translate(272px, -54px) rotate(52deg); }
+    64.6%{ transform: translate(132px, 21px) rotate(25deg); }
+    87.5%{ transform: translate(-53px, -16px) rotate(-14deg); }
     99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
 @keyframes intro-move-eraser{
     0%{ transform: translate(122px, 114px) rotate(21deg); }
-    16%{ transform: translate(188px, 194px) rotate(-40deg); }
-    33%{ transform: translate(122px, 264px) rotate(-110deg); }
-    52%{ transform: translate(38px, 194px) rotate(-180deg); }
-    70%{ transform: translate(-22px, 94px) rotate(-250deg); }
-    86%{ transform: translate(-28px, 34px) rotate(-320deg); }
+    23.9%{ transform: translate(188px, 194px) rotate(-40deg); }
+    45.6%{ transform: translate(122px, 264px) rotate(-110deg); }
+    64.6%{ transform: translate(38px, 194px) rotate(-180deg); }
+    80.8%{ transform: translate(-22px, 94px) rotate(-250deg); }
+    93.2%{ transform: translate(-28px, 34px) rotate(-320deg); }
     99%{ transform: translate(0px, 0px) rotate(-360deg); }
     100%{ transform: translate(0px, 0px) rotate(-360deg); }
 }
 
 @keyframes intro-move-clip-1{
     0%{ transform: translate(-168px, 254px) rotate(-41deg); }
-    35%{ transform: translate(122px, 94px) rotate(-200deg); }
-    70%{ transform: translate(-18px, 34px) rotate(-330deg); }
+    45.6%{ transform: translate(122px, 94px) rotate(-200deg); }
+    80.8%{ transform: translate(-18px, 34px) rotate(-330deg); }
     99%{ transform: translate(0px, 0px) rotate(-360deg); }
     100%{ transform: translate(0px, 0px) rotate(-360deg); }
 }
 
 @keyframes intro-move-clip-2{
     0%{ transform: translate(-51px, 274px) rotate(86deg); }
-    11%{ transform: translate(-46px, 246px) rotate(78deg); }
-    22%{ transform: translate(-35px, 210px) rotate(69deg); }
-    33%{ transform: translate(-28px, 184px) rotate(60deg); }
-    45%{ transform: translate(-21px, 155px) rotate(50deg); }
-    56%{ transform: translate(-14px, 115px) rotate(39deg); }
-    67%{ transform: translate(-8px, 74px) rotate(28deg); }
-    79%{ transform: translate(-4px, 45px) rotate(18deg); }
-    90%{ transform: translate(-2px, 20px) rotate(9deg); }
+    16.2%{ transform: translate(-46px, 246px) rotate(78deg); }
+    31.4%{ transform: translate(-35px, 210px) rotate(69deg); }
+    45.6%{ transform: translate(-28px, 184px) rotate(60deg); }
+    58.6%{ transform: translate(-21px, 155px) rotate(50deg); }
+    70.4%{ transform: translate(-14px, 115px) rotate(39deg); }
+    80.8%{ transform: translate(-8px, 74px) rotate(28deg); }
+    89.5%{ transform: translate(-4px, 45px) rotate(18deg); }
+    96.3%{ transform: translate(-2px, 20px) rotate(9deg); }
     99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
 @keyframes intro-move-clip-3{
     0%{ transform: translate(-264px, 84px) rotate(128deg); }
-    19%{ transform: translate(-124px, 146px) rotate(100deg); }
-    41%{ transform: translate(-224px, 56px) rotate(70deg); }
-    63%{ transform: translate(-62px, 94px) rotate(40deg); }
-    82%{ transform: translate(-86px, 16px) rotate(18deg); }
+    28.4%{ transform: translate(-124px, 146px) rotate(100deg); }
+    53.5%{ transform: translate(-224px, 56px) rotate(70deg); }
+    74.7%{ transform: translate(-62px, 94px) rotate(40deg); }
+    91.1%{ transform: translate(-86px, 16px) rotate(18deg); }
     99%{ transform: translate(0px, 0px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
@@ -361,7 +372,7 @@ html{
     text-align: center;
 }
 .section-heading{
-    font-size: min(2.22vw, 32px);
+    font-size: var(--section-heading-size);
     font-weight: 500;
     text-align: center;
     margin-top: 8px;
@@ -2017,8 +2028,10 @@ Aboutページ
     .section-label{
         font-size: 14px;
     }
-    .section-heading{
-        font-size: 24px;
+    /* スマホでは見出しを24pxに。
+       この1行を変えると、WORKSのアイコンの大きさも自動でついてくる */
+    :root{
+        --section-heading-size: 24px;
     }
 
     /* ---------- ヒーロー ---------- */
@@ -2316,19 +2329,33 @@ Aboutページ
         padding-top: 40px;
         padding-bottom: 60px;
     }
-    /* スマホはアイコンを見出しの左隣へ。大きさは見出し文字の3.9倍（カンプと同じ関係） */
+    /* スマホは見出しを画面のまん中にそろえ、アイコンはその左へ逃がす。
+       アイコンを横並びに入れると、その幅のぶん見出しが右へずれてしまうため。
+       大きさはカンプの3.9em を70%に縮めた 2.73em（＝65.5px） */
     .works-head{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
+        display: block;
+        text-align: center;
+    }
+    /* 文字の幅ぴったりの箱にする（中央寄せは親の text-align が効く）。
+       アイコンはこの箱の左端を基準に位置を決める */
+    .works-head-text{
+        position: relative;
+        display: inline-block;
     }
     .works-icon{
-        position: static;
-        font-size: 24px;
+        position: absolute;
+        top: 50%;
+        left: auto;           /* パソコン版の left 指定を打ち消す */
+        right: 100%;          /* 見出しの左端にそろえる */
+        margin-right: 8px;    /* そこからさらに左へ空ける余白。ここを増やすと離れる */
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+        transform: translateY(-50%);
         width: auto;
-        height: 3.9em;
-        margin: 0;
+        /* 見出し文字の2.73倍（カンプの3.9倍を70%に縮めた値）。
+           見出しのサイズを変えれば、ここも自動で追従する */
+        height: calc(var(--section-heading-size) * 2.73);
     }
     /* PCカード(760x360)を25%に縮小した比率。基準390px */
     .work-card{
